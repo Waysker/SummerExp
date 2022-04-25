@@ -70,3 +70,4 @@ To run simple tests use ``test`` sbt command
 - tests of not "business" logic, deleting testOutput folder recursively after tests
 - If I misinterpreted how data should be transformed and presented, at this point any change is easily implementable
 - Date is stored as a folder name
+- Given amount of time, project was not tested on unix systems, run & installation process could differ
