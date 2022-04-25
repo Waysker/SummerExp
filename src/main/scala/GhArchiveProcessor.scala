@@ -12,7 +12,6 @@ class GhArchiveProcessor {
   import spark.implicits._
 
 
-  //      .json(s"${testDay.getYear}/${testDay.getMonth}").as[GitArchiveDto]
   def readRecursivelyJson(folderPath: String): Dataset[GitArchiveDto] ={
     spark.read
       .option("recursiveFileLookup", "true")
@@ -39,6 +38,13 @@ class GhArchiveProcessor {
       .partitionBy("date")
       .mode("overwrite")
       .json("Output/data/")
+  }
+
+  def writeToPartitionedJsonByDate(df: DataFrame, outputPath: String): Unit ={
+    df.write
+      .partitionBy("date")
+      .mode("overwrite")
+      .json(outputPath)
   }
 
 
